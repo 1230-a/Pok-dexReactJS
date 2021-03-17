@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import CreatePokemon from './Components/CreatePokemon';
+import DisplayPokemon from './Components/DisplayPokemon';
+import AppContextProvider from './context/AppContextProvider';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+
+    return (
+        <AppContextProvider>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/display" component={DisplayPokemon}></Route>
+                    <Route path="/" component={CreatePokemon}></Route>
+                </Switch>
+            </BrowserRouter>
+        </AppContextProvider>
+
+    )
 }
 
 export default App;
